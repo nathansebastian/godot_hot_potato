@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b468ioi7o243n"]
+
+[ext_resource type="Texture2D" uid="uid://du2iwa8rtjy3h" path="res://Textures/drone.png" id="1_twm70"]
+[ext_resource type="Script" path="res://Scripts/Drone.gd" id="2_nsmei"]
+[ext_resource type="Script" path="res://Scripts/HitReceiver.gd" id="3_4xrfd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hgaqv"]
+radius = 77.1622
+
+[node name="Drone" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("2_nsmei")
+
+[node name="DroneImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_twm70")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hgaqv")
+
+[node name="HitReceiver" type="Node" parent="."]
+script = ExtResource("3_4xrfd")
+body_entered_function = "hit"

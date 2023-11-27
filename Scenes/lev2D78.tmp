@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://cdejuvshokc26"]
+
+[ext_resource type="Script" path="res://Scenes/Level.gd" id="1_msvok"]
+[ext_resource type="Texture2D" uid="uid://dfsaot0a8yg25" path="res://Textures/stones.png" id="2_6dhv5"]
+[ext_resource type="PackedScene" uid="uid://ckd1ofrm83i5n" path="res://Scenes/house.tscn" id="2_ttwdk"]
+[ext_resource type="Texture2D" uid="uid://b0cb4gqfns8ub" path="res://Textures/dirt_patch.png" id="3_l0jv5"]
+[ext_resource type="PackedScene" uid="uid://cqwwl6cf2rbku" path="res://Scenes/player.tscn" id="4_cm3vf"]
+[ext_resource type="Texture2D" uid="uid://c5okfeha3qu2p" path="res://Textures/moss_1.png" id="5_yklk8"]
+[ext_resource type="Texture2D" uid="uid://cio4jk8j0uvn2" path="res://Textures/moss_4.png" id="6_saqua"]
+[ext_resource type="Texture2D" uid="uid://cbygrwwrnrysg" path="res://Textures/moss_5.png" id="7_rcxan"]
+[ext_resource type="PackedScene" uid="uid://c6ujl4vgpr2cw" path="res://Scenes/gate.tscn" id="8_d2r1v"]
+[ext_resource type="PackedScene" uid="uid://car56ag5ouwjl" path="res://Scenes/toilet.tscn" id="9_8socx"]
+[ext_resource type="PackedScene" uid="uid://cj5ad6o41h0wp" path="res://Scenes/item.tscn" id="11_aqvlc"]
+[ext_resource type="PackedScene" uid="uid://b468ioi7o243n" path="res://Scenes/drone.tscn" id="14_eufx1"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_msvok")
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Soil" type="Sprite2D" parent="Ground"]
+texture_repeat = 2
+texture = ExtResource("2_6dhv5")
+region_enabled = true
+region_rect = Rect2(-2119.99, -1264.83, 7287.4, 8000)
+
+[node name="DirtPatch" type="Sprite2D" parent="Ground"]
+modulate = Color(0.768627, 0.721569, 0.545098, 1)
+position = Vector2(-1315, 149)
+texture = ExtResource("3_l0jv5")
+
+[node name="House" parent="Ground" instance=ExtResource("2_ttwdk")]
+position = Vector2(603, 1717)
+rotation = 3.14159
+scale = Vector2(0.6, 0.6)
+
+[node name="Moss1" type="Sprite2D" parent="Ground"]
+position = Vector2(1924, -408)
+texture = ExtResource("5_yklk8")
+
+[node name="Moss4" type="Sprite2D" parent="Ground"]
+position = Vector2(335, 991)
+texture = ExtResource("6_saqua")
+
+[node name="Moss2" type="Sprite2D" parent="Ground"]
+position = Vector2(135, 134)
+texture = ExtResource("5_yklk8")
+
+[node name="Moss5" type="Sprite2D" parent="Ground"]
+position = Vector2(1006, 130)
+texture = ExtResource("7_rcxan")
+
+[node name="Gate" parent="Ground" instance=ExtResource("8_d2r1v")]
+position = Vector2(2577, -289)
+rotation = 1.5708
+
+[node name="Toilet" parent="Ground" instance=ExtResource("9_8socx")]
+position = Vector2(1052, -799)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Drone" parent="." instance=ExtResource("14_eufx1")]
+scale = Vector2(0.5, 0.5)
+
+[node name="Player" parent="." instance=ExtResource("4_cm3vf")]
+position = Vector2(2055, -266)
+rotation = 3.14159
+
+[node name="Player_Camera" type="Camera2D" parent="Player"]
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Item" parent="." instance=ExtResource("11_aqvlc")]
+position = Vector2(1527, -317)
+
+[connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
+[connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]
+[connection signal="on_player_entered" from="Ground/Gate" to="." method="_on_gate_on_player_entered"]
+[connection signal="grenade_thrown" from="Player" to="." method="_on_player_grenade_thrown"]
+[connection signal="laser_shot" from="Player" to="." method="_on_player_laser_shot"]

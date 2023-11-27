@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtnhjogq8mlvf"]
+
+[ext_resource type="Texture2D" uid="uid://c3jm25dlfa16d" path="res://Textures/overlays/infrastructure.png" id="1_f53ik"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Infrastructure" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.0196078)
+position = Vector2(245, 561)
+scale = Vector2(2, 2)
+texture = ExtResource("1_f53ik")
+
+[node name="Infrastructure2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.0196078)
+position = Vector2(245, 1667)
+scale = Vector2(2, 2)
+texture = ExtResource("1_f53ik")
+
+[node name="Infrastructure3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.0196078)
+position = Vector2(245, 2769)
+scale = Vector2(2, 2)
+texture = ExtResource("1_f53ik")
+
+[node name="Infrastructure4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.0196078)
+position = Vector2(245, 3875)
+scale = Vector2(2, 2)
+texture = ExtResource("1_f53ik")

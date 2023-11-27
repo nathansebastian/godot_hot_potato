@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bupiitsrqb2qq"]
+
+[ext_resource type="PackedScene" uid="uid://c6ap2y780i14o" path="res://Scenes/simple_light.tscn" id="1_xsdbu"]
+[ext_resource type="Texture2D" uid="uid://cdtrns6butox" path="res://Textures/Lights/circle.png" id="2_b40kf"]
+
+[node name="SimpleLightWeak" instance=ExtResource("1_xsdbu")]
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="0"]
+color = Color(0.67451, 1, 1, 1)
+energy = 5.0
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 3.0
+texture = ExtResource("2_b40kf")
