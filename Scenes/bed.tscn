@@ -13,7 +13,7 @@ collision_layer = 4
 collision_mask = 11
 
 [node name="BedImage" type="Sprite2D" parent="."]
-position = Vector2(391, 325)
+position = Vector2(0.152679, 6.87949)
 rotation = -1.5708
 texture = ExtResource("1_oiy28")
 
@@ -27,5 +27,5 @@ scale = Vector2(1, 0.807968)
 texture = ExtResource("3_bjap2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(390.5, 318.5)
+position = Vector2(-0.347321, 0.379517)
 shape = SubResource("RectangleShape2D_ooqxm")
