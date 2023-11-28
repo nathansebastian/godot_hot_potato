@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdejuvshokc26"]
+[gd_scene load_steps=16 format=3 uid="uid://cdejuvshokc26"]
 
 [ext_resource type="Script" path="res://Scenes/Level.gd" id="1_msvok"]
 [ext_resource type="Texture2D" uid="uid://dfsaot0a8yg25" path="res://Textures/stones.png" id="2_6dhv5"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://car56ag5ouwjl" path="res://Scenes/toilet.tscn" id="9_8socx"]
 [ext_resource type="PackedScene" uid="uid://doh8m8lsvs33n" path="res://Scenes/crate.tscn" id="10_scyp5"]
 [ext_resource type="PackedScene" uid="uid://cj5ad6o41h0wp" path="res://Scenes/item.tscn" id="11_aqvlc"]
+[ext_resource type="PackedScene" uid="uid://dinmgmg5y5uoa" path="res://Scenes/scout.tscn" id="11_bfg6t"]
 [ext_resource type="PackedScene" uid="uid://b468ioi7o243n" path="res://Scenes/drone.tscn" id="14_eufx1"]
 [ext_resource type="PackedScene" uid="uid://y4dsenvdsp7o" path="res://Scenes/ui.tscn" id="14_n2m4p"]
 
@@ -59,12 +60,14 @@ rotation = 1.5708
 [node name="Toilet" parent="Ground" instance=ExtResource("9_8socx")]
 position = Vector2(1052, -799)
 rotation = 3.14159
-scale = Vector2(0.5, 0.5)
 
 [node name="Crate" parent="." instance=ExtResource("10_scyp5")]
 position = Vector2(1103, -509)
 rotation = 3.14159
 scale = Vector2(0.5, 0.5)
+
+[node name="Scout" parent="." instance=ExtResource("11_bfg6t")]
+position = Vector2(1343, -111)
 
 [node name="Drone" parent="." instance=ExtResource("14_eufx1")]
 scale = Vector2(0.5, 0.5)

@@ -1,11 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://1vcamx4fnack"]
+[gd_scene load_steps=20 format=3 uid="uid://1vcamx4fnack"]
 
 [ext_resource type="Script" path="res://Scripts/inside.gd" id="1_gy3kt"]
+[ext_resource type="Texture2D" uid="uid://c1igdnefxff3q" path="res://Textures/Decals/brushes/brush048.png" id="2_du4ko"]
 [ext_resource type="PackedScene" uid="uid://cqwwl6cf2rbku" path="res://Scenes/player.tscn" id="2_g5he6"]
 [ext_resource type="Texture2D" uid="uid://duplg0ip2dywc" path="res://Textures/dirt.png" id="2_k8dhj"]
 [ext_resource type="TileSet" uid="uid://b0utkf4evkueg" path="res://Scenes/Tilemap/house.tres" id="2_qg01b"]
+[ext_resource type="PackedScene" uid="uid://b2ydxc2naowh5" path="res://Scenes/bed.tscn" id="3_s2ejp"]
+[ext_resource type="PackedScene" uid="uid://car56ag5ouwjl" path="res://Scenes/toilet.tscn" id="4_3h3va"]
+[ext_resource type="PackedScene" uid="uid://doh8m8lsvs33n" path="res://Scenes/crate.tscn" id="5_sb7ny"]
 [ext_resource type="PackedScene" uid="uid://du5yn2o0tsua6" path="res://Scenes/light_fan_animation.tscn" id="6_i2l1t"]
 [ext_resource type="Texture2D" uid="uid://cdtrns6butox" path="res://Textures/Lights/circle.png" id="6_k0hm0"]
+[ext_resource type="PackedScene" uid="uid://c5tuo5ll7g3d5" path="res://Scenes/steam_vent.tscn" id="6_qgbtx"]
 [ext_resource type="PackedScene" uid="uid://dtnhjogq8mlvf" path="res://Scenes/infrastructure.tscn" id="7_7qowv"]
 [ext_resource type="Texture2D" uid="uid://ds1hfec8oeqg3" path="res://Textures/overlays/hole.png" id="8_f52gp"]
 [ext_resource type="PackedScene" uid="uid://bupiitsrqb2qq" path="res://Scenes/simple_light_weak.tscn" id="9_rgbte"]
@@ -22,7 +27,93 @@ size = Vector2(389.5, 733)
 [node name="Inside" type="Node2D"]
 script = ExtResource("1_gy3kt")
 
+[node name="Decals" type="Node2D" parent="."]
+modulate = Color(0, 0.294118, 0.180392, 0.396078)
+position = Vector2(-62, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Decals"]
+modulate = Color(0.407843, 0, 0.223529, 1)
+position = Vector2(-1385, -2002)
+scale = Vector2(2, 2)
+texture = ExtResource("2_du4ko")
+
+[node name="Ground" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Bed" parent="Ground" instance=ExtResource("3_s2ejp")]
+position = Vector2(1916, -2624)
+
+[node name="Bed2" parent="Ground" instance=ExtResource("3_s2ejp")]
+position = Vector2(2666, -2624)
+
+[node name="Toilet" parent="Ground" instance=ExtResource("4_3h3va")]
+position = Vector2(711, 274)
+
+[node name="Toilet2" parent="Ground" instance=ExtResource("4_3h3va")]
+position = Vector2(892, 274)
+
+[node name="Toilet3" parent="Ground" instance=ExtResource("4_3h3va")]
+position = Vector2(1277, 274)
+
+[node name="Toilet4" parent="Ground" instance=ExtResource("4_3h3va")]
+position = Vector2(1100, 274)
+
+[node name="Crate" type="Node" parent="Ground"]
+
+[node name="Crate" parent="Ground/Crate" instance=ExtResource("5_sb7ny")]
+position = Vector2(1337, -2257)
+rotation = -3.14159
+
+[node name="Crate2" parent="Ground/Crate" instance=ExtResource("5_sb7ny")]
+position = Vector2(2322, -1507)
+rotation = -3.14159
+
+[node name="Crate3" parent="Ground/Crate" instance=ExtResource("5_sb7ny")]
+position = Vector2(-2859, -2650)
+rotation = -3.14159
+
+[node name="Crate4" parent="Ground/Crate" instance=ExtResource("5_sb7ny")]
+position = Vector2(-315, -36)
+rotation = 1.5708
+
+[node name="Crate5" parent="Ground/Crate" instance=ExtResource("5_sb7ny")]
+position = Vector2(3144, 723)
+rotation = 1.5708
+
+[node name="Crate6" parent="Ground/Crate" instance=ExtResource("5_sb7ny")]
+position = Vector2(-1078, 1453)
+rotation = 1.5708
+
+[node name="Crate7" parent="Ground/Crate" instance=ExtResource("5_sb7ny")]
+position = Vector2(-3040, 1872)
+rotation = 1.5708
+
+[node name="Crate8" parent="Ground/Crate" instance=ExtResource("5_sb7ny")]
+position = Vector2(1180, 1866)
+scale = Vector2(0.410308, 1)
+
+[node name="SteamVent" parent="Ground" instance=ExtResource("6_qgbtx")]
+position = Vector2(-2246, -1415)
+
+[node name="SteamVent2" parent="Ground" instance=ExtResource("6_qgbtx")]
+position = Vector2(-2260, -2370)
+
+[node name="SteamVent6" parent="Ground" instance=ExtResource("6_qgbtx")]
+position = Vector2(-2475, 1260)
+
+[node name="SteamVent7" parent="Ground" instance=ExtResource("6_qgbtx")]
+position = Vector2(-2475, 2632)
+
+[node name="SteamVent8" parent="Ground" instance=ExtResource("6_qgbtx")]
+position = Vector2(-1224, 2632)
+
+[node name="SteamVent9" parent="Ground" instance=ExtResource("6_qgbtx")]
+position = Vector2(-1251, 2201)
+
 [node name="Level" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Background" type="Sprite2D" parent="Level"]
 z_index = -2
@@ -56,11 +147,17 @@ layer_2/tile_data = PackedInt32Array(-458758, 196608, 6, -458759, 0, 6, -458761,
 [node name="Drone" parent="." instance=ExtResource("14_alepj")]
 position = Vector2(-18, -296)
 scale = Vector2(0.5, 0.5)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Projectiles" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_g5he6")]
 position = Vector2(-3103, -1954)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Player_Camera" type="Camera2D" parent="Player"]
 zoom = Vector2(0.6, 0.6)
@@ -79,6 +176,7 @@ texture = ExtResource("6_k0hm0")
 position = Vector2(-18, -296)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="LightFanAnimation" parent="Lights" instance=ExtResource("6_i2l1t")]
 position = Vector2(2450, -5782)
@@ -284,6 +382,8 @@ blend_mode = 1
 
 [node name="ExitArea" type="Area2D" parent="."]
 position = Vector2(-3473, -1940)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
 position = Vector2(27, 7)
@@ -291,6 +391,8 @@ shape = SubResource("RectangleShape2D_ek68n")
 
 [node name="Item" parent="." instance=ExtResource("12_jbdfs")]
 position = Vector2(-2467, -1939)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [connection signal="grenade_thrown" from="Player" to="." method="_on_player_grenade_thrown"]
 [connection signal="laser_shot" from="Player" to="." method="_on_player_laser_shot"]

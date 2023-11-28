@@ -2,7 +2,7 @@ extends Node
 
 signal stat_change
 
-
+var player_position: Vector2
 var  laser_amount = 20:
 	set(value):
 		laser_amount = value

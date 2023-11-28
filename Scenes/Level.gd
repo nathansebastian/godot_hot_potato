@@ -12,7 +12,8 @@ var test_array: Array[String] =  ["Test","Hello","Stuff"]
 func _ready():
 	for _container in get_tree().get_nodes_in_group('Container'):
 		_container.connect("open", _on_container_opened)
-		
+	for _scout in get_tree().get_nodes_in_group('Scouts'):
+		_scout.connect("laser", _on_scout_laser)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -59,5 +60,7 @@ func _on_gate_on_player_entered(body):
 	$Player.overwrite_mouse = true
 	#tween.tween_callback(callable)
 	
+func _on_scout_laser():
+	pass
 func switch_scene():
 	TransitionLayer.change_scene("res://Scenes/inside.tscn")

@@ -21,6 +21,7 @@ func _process(_delta):
 	velocity = direction * speed
 	#Handle pushing
 	move_and_slide()
+	Globals.player_position = global_position
 	last_mouse_position = mouse_position()#rotate
 	look_at(last_mouse_position)
 	
