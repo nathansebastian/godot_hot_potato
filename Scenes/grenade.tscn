@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0f5fk4om20uv"]
+[gd_scene load_steps=13 format=3 uid="uid://c0f5fk4om20uv"]
 
 [ext_resource type="Texture2D" uid="uid://31ukr1rraqfw" path="res://Textures/grenade.png" id="1_a03h7"]
 [ext_resource type="Script" path="res://Scenes/grenade.gd" id="1_fb846"]
@@ -123,6 +123,23 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.7, 3.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"enable_hurt_area_intial_explosion"
+}, {
+"args": [],
+"method": &"enable_hurt_area_last_explosion"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o4can"]
 _data = {
@@ -130,6 +147,12 @@ _data = {
 "RESET": SubResource("Animation_aj5kp"),
 "explosion": SubResource("Animation_omv8l")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_je6su"]
+radius = 65.7647
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f3i0f"]
+radius = 169.047
 
 [node name="Grenade" type="RigidBody2D"]
 collision_layer = 8
@@ -139,6 +162,7 @@ gravity_scale = 0.0
 linear_velocity = Vector2(100, 0)
 linear_damp = 1.6
 script = ExtResource("1_fb846")
+body_entered_reciever = "HitReceiver"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_f826v")
@@ -166,3 +190,19 @@ speed_scale = 2.5
 libraries = {
 "": SubResource("AnimationLibrary_o4can")
 }
+
+[node name="HurtArea" type="Node2D" parent="."]
+
+[node name="Intial Explosion" type="Area2D" parent="HurtArea"]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea/Intial Explosion"]
+shape = SubResource("CircleShape2D_je6su")
+
+[node name="Last Explosion" type="Area2D" parent="HurtArea"]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea/Last Explosion"]
+shape = SubResource("CircleShape2D_f3i0f")

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c6fopnlbgbvqo" path="res://Textures/Objects/crate_base.png" id="2_oqn57"]
 [ext_resource type="Script" path="res://Scripts/HitReceiver.gd" id="5_5kl0m"]
 
-[node name="Crate" instance=ExtResource("1_skane")]
+[node name="Crate" groups=["Damagable"] instance=ExtResource("1_skane")]
 script = ExtResource("2_57i18")
 
 [node name="BaseSprite" parent="." index="0"]

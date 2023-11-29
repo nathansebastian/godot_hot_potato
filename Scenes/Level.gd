@@ -12,8 +12,8 @@ var test_array: Array[String] =  ["Test","Hello","Stuff"]
 func _ready():
 	for _container in get_tree().get_nodes_in_group('Container'):
 		_container.connect("open", _on_container_opened)
-	for _scout in get_tree().get_nodes_in_group('Scouts'):
-		_scout.connect("laser", _on_scout_laser)
+	for scout in get_tree().get_nodes_in_group('Scouts'):
+		scout.connect("laser", _on_scout_laser)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -27,13 +27,7 @@ func  _on_container_opened(pos, direction):
 	$Items.call_deferred('add_child',item)
 
 func _on_player_laser_shot(pos,direction):
-	var laser = laser_scene.instantiate() as Area2D
-	laser.direction = direction
-	laser.position = pos
-	laser.rotation_degrees = rad_to_deg(direction.angle()) + 90
-	$Projectiles.add_child(laser,true)
-	UserInterface.update_laser_text()
-	
+	create_laser(pos,direction)
 	
 
 func _on_player_grenade_thrown(pos,direction):
@@ -42,6 +36,18 @@ func _on_player_grenade_thrown(pos,direction):
 	grenade.linear_velocity = direction * grenade.speed
 	$Projectiles.add_child(grenade,true)
 	UserInterface.update_grenade_text()
+	
+func _on_scout_laser(pos,direction):
+	create_laser(pos,direction)
+	
+func create_laser(pos,direction) -> void:
+	var laser = laser_scene.instantiate() as Area2D
+	laser.direction = direction
+	laser.position = pos
+	laser.rotation_degrees = rad_to_deg(direction.angle()) + 90
+	$Projectiles.add_child(laser,true)
+	UserInterface.update_laser_text()
+		
 func _on_house_player_entered():
 	var tween = get_tree().create_tween()
 	tween.tween_property($Player/Player_Camera,"zoom",indoor_zoom,1)
@@ -59,8 +65,7 @@ func _on_gate_on_player_entered(body):
 	TransitionLayer.change_scene("res://Scenes/inside.tscn")
 	$Player.overwrite_mouse = true
 	#tween.tween_callback(callable)
+
 	
-func _on_scout_laser():
-	pass
 func switch_scene():
 	TransitionLayer.change_scene("res://Scenes/inside.tscn")

@@ -64,6 +64,8 @@ func mouse_position() -> Vector2:
 	
 	return _mouse_position
 	
+func hit(sender):
+	print("Player hit")
 
 func _on_timer_timeout():
 	can_laser = true

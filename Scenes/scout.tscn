@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dinmgmg5y5uoa"]
+[gd_scene load_steps=6 format=3 uid="uid://dinmgmg5y5uoa"]
 
 [ext_resource type="Script" path="res://Scripts/Scout.gd" id="1_c5f3w"]
 [ext_resource type="Texture2D" uid="uid://dodurqyroyjnx" path="res://Textures/enemies/scout.png" id="2_5a3il"]
+[ext_resource type="Script" path="res://Scripts/HitReceiver.gd" id="3_1epjh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_we2lq"]
 radius = 49.0
@@ -10,7 +11,7 @@ height = 138.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_sex61"]
 radius = 751.513
 
-[node name="Scout" type="CharacterBody2D"]
+[node name="Scout" type="CharacterBody2D" groups=["Damagable", "Scouts"]]
 collision_layer = 2
 collision_mask = 11
 script = ExtResource("1_c5f3w")
@@ -38,7 +39,11 @@ position = Vector2(80, -29)
 [node name="Marker2D2" type="Marker2D" parent="LaserSpawnPositions"]
 position = Vector2(90, 9)
 
-[node name="LaserCooldown" type="Timer" parent="." groups=["Scouts"]]
+[node name="LaserCooldown" type="Timer" parent="."]
+
+[node name="HitReceiver" type="Node" parent="."]
+script = ExtResource("3_1epjh")
+body_entered_function = "hit"
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
