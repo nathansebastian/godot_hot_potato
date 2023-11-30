@@ -1,9 +1,13 @@
 extends CharacterBody2D
 
+@export var health:int = 10 
 var player_visible:bool = false
 var can_laser:bool = true
 var right_gun_use:bool = true
 signal laser(pos,direction)
+
+func private_set(val) -> void:
+	pass
 
 func _ready():
 	pass
@@ -23,7 +27,9 @@ func _process(_delta):
 			$LaserCooldown.start()
 
 func hit(sender):
-	print("Scout Hit")
+	health -= 4
+	if health < 0:
+		queue_free()
 		
 func _on_attack_area_body_entered(body):
 	player_visible = true 
