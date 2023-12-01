@@ -13,10 +13,10 @@ var  grenade_amount = 5:
 		grenade_amount = value
 		grenade_amount = limit_value(grenade_amount,5)
 		stat_change.emit()
-var  health_amount = 80:
+var  health_amount = 30:
 	set(value):
 		health_amount = value
-		health_amount = limit_value(health_amount,100)
+		health_amount = limit_value(health_amount,50)
 		stat_change.emit()
 
 	

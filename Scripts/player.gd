@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal laser_shot(pos,direction)
 signal grenade_thrown(pos,direction)
+signal player_died()
 var overwrite_mouse: bool = false
 var last_mouse_position:Vector2
 var can_laser: bool = true
@@ -65,7 +66,13 @@ func mouse_position() -> Vector2:
 	return _mouse_position
 	
 func hit(sender):
-	print("Player hit")
+	var _health:int = Globals.health_amount
+	_health -= 10
+	if(_health <= 0):
+		queue_free()
+		player_died.emit()
+		
+	Globals.health_amount = _health
 
 func _on_timer_timeout():
 	can_laser = true
@@ -81,7 +88,7 @@ func add_item(type: String) -> void:
 		Globals.grenade_amount += 2
 		#UserInterface.update_grenade_text()
 	elif  type == 'health':
-		Globals.health_amount += 25
+		Globals.health_amount += 15
 		#UserInterface.update_health_bar()
 		
 

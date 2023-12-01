@@ -4,6 +4,7 @@ extends RigidBody2D
 @export var body_entered_reciever = ""
 @onready var intial_explosion: Area2D = $"HurtArea/Intial Explosion"
 @onready var last_explosion: Area2D = $"HurtArea/Last Explosion"
+@export var damage:int = 10
 var _explosion_area: Area2D
 var exploding:bool = false
 var _damagables:Array[Node2D] 

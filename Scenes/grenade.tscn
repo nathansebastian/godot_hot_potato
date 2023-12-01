@@ -130,7 +130,7 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.7, 3.7),
+"times": PackedFloat32Array(0.7, 3.5),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -152,7 +152,7 @@ _data = {
 radius = 65.7647
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f3i0f"]
-radius = 209.497
+radius = 182.003
 
 [node name="Grenade" type="RigidBody2D"]
 collision_layer = 8
@@ -185,11 +185,11 @@ hframes = 8
 vframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Blinking Light"
-speed_scale = 2.5
 libraries = {
 "": SubResource("AnimationLibrary_o4can")
 }
+autoplay = "Blinking Light"
+speed_scale = 2.5
 
 [node name="HurtArea" type="Node2D" parent="."]
 

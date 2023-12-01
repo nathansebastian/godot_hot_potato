@@ -10,13 +10,12 @@ var test_array: Array[String] =  ["Test","Hello","Stuff"]
 @export var indoor_zoom: Vector2 = Vector2(0.8,0.8)
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Player.connect("player_died", _game_over_scene_transition)
 	for _container in get_tree().get_nodes_in_group('Container'):
 		_container.connect("open", _on_container_opened)
 	for scout in get_tree().get_nodes_in_group('Scouts'):
 		scout.connect("laser", _on_scout_laser)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func  _on_container_opened(pos, direction):
 	var item = item_scene.instantiate()
@@ -59,13 +58,10 @@ func _on_house_player_exited():
 
 
 func _on_gate_on_player_entered(body):
-	#var callable = Callable(self,"switch_scene")
 	var tween = create_tween()
 	tween.tween_property($Player,"speed",0,0.5)
 	TransitionLayer.change_scene("res://Scenes/inside.tscn")
 	$Player.overwrite_mouse = true
-	#tween.tween_callback(callable)
 
-	
-func switch_scene():
-	TransitionLayer.change_scene("res://Scenes/inside.tscn")
+func _game_over_scene_transition():
+	TransitionLayer.change_scene("res://Scenes/game_over.tscn")
