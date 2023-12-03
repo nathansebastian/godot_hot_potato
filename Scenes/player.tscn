@@ -46,7 +46,6 @@ rotation = -1.5708
 shape = SubResource("CapsuleShape2D_mahh4")
 
 [node name="LaserTimer" type="Timer" parent="."]
-wait_time = 0.5
 
 [node name="GrenadeTimer" type="Timer" parent="."]
 wait_time = 3.0

@@ -6,6 +6,7 @@ var grenade_scene = preload("res://Scenes/grenade.tscn")
 var item_scene = preload("res://Scenes/item.tscn")
 var startingPos : float 
 var test_array: Array[String] =  ["Test","Hello","Stuff"]
+@onready var _laser_sfx = $Player/SoundQueue
 @onready var starting_zoom = $Player/Player_Camera.zoom
 @export var indoor_zoom: Vector2 = Vector2(0.8,0.8)
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +27,7 @@ func  _on_container_opened(pos, direction):
 	$Items.call_deferred('add_child',item)
 
 func _on_player_laser_shot(pos,direction):
+	_laser_sfx.play_sound()
 	create_laser(pos,direction)
 	
 
